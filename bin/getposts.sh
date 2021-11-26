@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-curl https://dev.to/api/articles/latest?username=melvincarvalho
+curl https://dev.to/api/articles?username=melvincarvalho
+
