@@ -8,7 +8,7 @@ const fs = require('fs')
 // data
 globalThis.data = {
   user: 'melvincarvalho',
-  api: 'https://dev.to/api/articles/',
+  api: 'https://dev.to/api/articles/latest',
   datadir: '.'
 }
 
