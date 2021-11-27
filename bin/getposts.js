@@ -24,7 +24,9 @@ const cmd = `curl ${useruri}`
 console.log('cmd', cmd)
 
 const json = JSON.parse($(cmd).toString())
-console.log('json', json)
+const output = JSON.stringify(json, null, 2)
+const outfile = `${data.datadir}/posts.json`
+console.log('output', output)
 
-fs.writeFileSync(`${data.datadir}/posts.json`, JSON.stringify(json, null, 2))
+fs.writeFileSync(outfile, output)
 
