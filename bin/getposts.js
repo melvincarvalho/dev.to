@@ -32,6 +32,9 @@ console.log('cmd', cmd)
 const json = JSON.parse($(cmd).toString())
 
 // output
+if (!fs.existsSync(data.dataDir)) {
+  fs.mkdirSync(data.dataDir)
+}
 const output = JSON.stringify(json, null, 2)
 const outFile = path.join(data.dataDir, data.filename)
 console.log('output', output)
