@@ -8,29 +8,31 @@ const $ = require('child_process').execSync
 
 // data
 globalThis.data = {
-  user: 'melvincarvalho',
   api: 'https://dev.to/api/articles/latest',
-  datadir: path.join(__dirname, '..'),
-  perpage: 1000
+  dataDir: path.join(__dirname, '..'),
+  filename: 'posts.json',
+  perPage: 1000,
+  user: 'melvincarvalho'
 }
 
 // init
-data.user = argv._[0] || data.user
 data.api = argv.api || data.api
-data.datadir = argv.datadir || data.datadir
-data.perpage = argv.perpage || data.perpage
+data.dataDir = argv.dataDir || data.dataDir
+data.filename = argv.filename || data.filename
+data.perPage = argv.perPage || data.perPage
+data.user = argv._[0] || data.user
 console.log('data', data)
 
 // main
-let postsuri = `${data.api}`
-postsuri += `?per_page=${data.perpage}`
-postsuri += `&username=${data.user}`
-const cmd = `curl '${postsuri}'`
+let postsUri = `${data.api}`
+postsUri += `?per_page=${data.perPage}`
+postsUri += `&username=${data.user}`
+const cmd = `curl '${postsUri}'`
 console.log('cmd', cmd)
 const json = JSON.parse($(cmd).toString())
 
 // output
 const output = JSON.stringify(json, null, 2)
-const outfile = `${data.datadir}/posts.json`
+const outFile = path.join(data.dataDir, data.filename)
 console.log('output', output)
-fs.writeFileSync(outfile, output)
+fs.writeFileSync(outFile, output)
