@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+    <title>Posts</title>
+  </head>
+  <body>
+    <h1>
+      Posts
+    </h1>
+
+    <div id="wrapper"></div>
+
+    <hr/>
+
+    <footer>© 2021 Melvin Carvalho |<a href="http://twitter.com/melvincarvalho" style="color: blue;">Twitter</a> | <a href="http://github.com/melvincarvalho" style="color: blue;">Github</a> | Genesis | <i><a target="_blank" href="https://gitmark.info/gitmark:f06d2e68884713ce7927dbf42246f8c6962c4f0e2d10dc998115a4bcfeb25a6b" style="color: blue;">gitmark:f06d2e68884713ce7927dbf42246f8c6962c4f0e2d10dc998115a4bcfeb25a6b:0</a></i></footer>
+
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+    <script>
+      var j = []
+
+      fetch('./posts/index.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('HTTP error ' + response.status)
+          }
+          return response.json()
+        })
+        .then(json => {
+          for (var i = 0; i < json.length; i++) {
+            j.push([{title: `${json[i].title}`, canonical: json[i].canonical_url}, `${json[i].tags}`, `${json[i].created_at}`])
+          }
+          console.log('json', j)
+          main()
+        })
+        .catch(function () {
+          this.dataError = true
+        })
+
+      function main () {
+        new gridjs.Grid({
+          columns: [
+            {
+              name: 'name',
+              formatter: cell =>
+                gridjs.html(`<a href="${cell.canonical}" target="_blank">${cell.title}</a>`)
+            },
+            {
+              name: 'tags'
+            },
+            {
+              name: 'date'
+            }
+          ],
+          search: true,
+          sort: true,
+          data: j
+        }).render(document.getElementById('wrapper'))
+      }
+
+      // setTimeout(main, 1000)
+    </script>
+  </body>
+</html>

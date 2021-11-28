@@ -1,6 +1,6 @@
 {
   "name": "devtoposts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "get your dev to posts",
   "main": "index.js",
   "bin": {
