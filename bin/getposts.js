@@ -9,8 +9,8 @@ const $ = require('child_process').execSync
 // data
 globalThis.data = {
   api: 'https://dev.to/api/articles/latest',
-  dataDir: path.join(__dirname, '..'),
-  filename: 'posts.json',
+  dataDir: path.join(__dirname, '..', 'posts'),
+  filename: 'index.json',
   perPage: 1000,
   user: 'melvincarvalho'
 }
@@ -33,7 +33,7 @@ const json = JSON.parse($(cmd).toString())
 
 // output
 if (!fs.existsSync(data.dataDir)) {
-  fs.mkdirSync(data.dataDir)
+  fs.mkdirSync(data.dataDir, { recursive: true })
 }
 const output = JSON.stringify(json, null, 2)
 const outFile = path.join(data.dataDir, data.filename)
