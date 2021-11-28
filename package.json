@@ -1,0 +1,27 @@
+{
+  "name": "devtoposts",
+  "version": "0.0.1",
+  "description": "get your dev to posts",
+  "main": "index.js",
+  "bin": {
+    "devtoposts": "getpost.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melvincarvalho/dev.to.git"
+  },
+  "keywords": [
+    "dev.to",
+    "blog",
+    "posts"
+  ],
+  "author": "Melvin Carvalho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/melvincarvalho/dev.to/issues"
+  },
+  "homepage": "https://github.com/melvincarvalho/dev.to#readme"
+}
