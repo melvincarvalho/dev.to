@@ -41,6 +41,10 @@ bin/getposts.js [username]
 ```
 Will get your latest posts and put then in `posts/index.json`
 
+## Demo
+
+[Demo](https://melvincarvalho.github.io/dev.to/)
+
 ## License
 
 - MIT
